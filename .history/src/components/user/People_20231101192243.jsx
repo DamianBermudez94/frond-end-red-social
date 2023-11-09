@@ -1,10 +1,8 @@
 import { useEffect, useState } from "react";
 import avatar from "../../assets/img/user.png";
 import { Global } from "../helpers/Global";
-import { useAuth } from "../hooks/useAuth";
 
 export const People = () => {
-  const { auth } = useAuth();
   // Estado para ontener los usuarios
   const [users, setUsers] = useState([]);
   // Estado para obtener la cantidad de paginas
@@ -47,7 +45,7 @@ export const People = () => {
       setLoading(false);
 
       // Comprobamos la longitud del estado con en de la lista y si es igual, al estado le pasamos false
-      if (users.length >= data.total) {
+      if (users.length >= (data.total)) {
         setMore(false);
       }
     }
@@ -62,37 +60,36 @@ export const People = () => {
     console.log(following);
   };
 
-  const follow = async (userId) => {
-    const request = await fetch(Global.url + "follow/save", {
-      method: "POST",
-      body: JSON.stringify({ followed: userId }),
-      headers: {
-        "Content-type": "application/json",
-        Authorization: localStorage.getItem("token"),
-      },
-    });
-    const data = await request.json();
+
+  const follow = async (userId)=>{
+    const request = await fetch(Global.url +"follow/save",{
+      method:"POST",
+      body: JSON.stringify({followed:userId}),
+      headers:{"Content-type":"application/json",
+      "Authorization":localStorage.getItem("token")}
+    })
+    const data = await request.json()
     if (data.status == "success") {
-      setFollowing([...following, userId]);
+      setFollowing([...following, userId])
     }
-  };
-  const unfollow = async (userId) => {
-    const request = await fetch(Global.url + "follow/unfollow/" + userId, {
-      method: "DELETE",
-      headers: {
-        "Content-type": "application/json",
-        Authorization: localStorage.getItem("token"),
-      },
-    });
-    const data = await request.json();
+
+    
+
+  }
+  const unfollow = async (userId)=>{
+    const request = await fetch(Global.url +"follow/unfollow/"+ userId,{
+      method:"DELETE",
+      headers:{"Content-type":"application/json",
+      "Authorization":localStorage.getItem("token")}
+    })
+    const data = await request.json()
     console.log(data);
     if (data.status == "success") {
-      let filterFollowings = following.filter(
-        (followingUserId) => userId !== followingUserId
-      );
-      setFollowing(filterFollowings);
+      let filterFollowings = following.filter(followingUserId=> userId !== followingUserId)
+      setFollowing(filterFollowings)
     }
-  };
+
+  }
   return (
     <>
       <header className="content__header">
@@ -113,13 +110,13 @@ export const People = () => {
                         alt="Foto de perfil"
                       />
                     )}
-                    {user.image == "default.png" && (
+                    {user.image == "default.png" && 
                       <img
                         src={avatar}
                         className="post__user-image"
                         alt="Foto de perfil"
                       />
-                    )}
+                    }
                   </a>
                 </div>
 
@@ -137,26 +134,18 @@ export const People = () => {
                   <h4 className="post__content">{user.bio}</h4>
                 </div>
               </div>
-              {user._id != auth._id && (
-                <div className="post__buttons">
-                  {!following.includes(user._id) && (
-                    <button
-                      className="post__button post__button--green"
-                      onClick={() => follow(user._id)}
-                    >
-                      seguir
-                    </button>
-                  )}
-                  {following.includes(user._id) && (
-                    <button
-                      className="post__button"
-                      onClick={() => unfollow(user._id)}
-                    >
-                      Dejar de seguir
-                    </button>
-                  )}
-                </div>
-              )}
+
+              <div className="post__buttons">
+                {!following.includes(user._id) &&
+                  (<button  className="post__button post__button--green" onClick={()=> follow(user._id)}>
+                    seguir
+                  </button>)}
+                {following.includes(user._id) && (
+                  <button  className="post__button" onClick={()=>unfollow(user._id)}>
+                    Dejar de seguir
+                  </button>
+                )}
+              </div>
             </article>
           );
         })}
