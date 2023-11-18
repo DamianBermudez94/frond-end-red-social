@@ -38,7 +38,7 @@ export const Nav = () => {
 
       <ul className="container-lists__list-end">
         <li className="list-end__item">
-          <Link to={"perfil/" + auth._id} className="list-end__link-image">
+          <Link to={"profile/" + auth._id} className="list-end__link-image">
             {auth.image != "default.png" && (
               <img
                 src={Global.url + "user/uploads/" + auth.image}
@@ -56,7 +56,7 @@ export const Nav = () => {
           </Link>
         </li>
         <li className="list-end__item">
-          <Link to={"perfil/" + auth._id} className="list-end__link">
+          <Link to={"siguiendo/" + auth._id} className="list-end__link">
             <span className="list-end__name">{auth.nick}</span>
             <i className="fa-solid fa-caret-down"></i>
           </Link>

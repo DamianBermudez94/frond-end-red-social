@@ -17,13 +17,13 @@ export const Following = () => {
   const [loading, setLoading] = useState(true);
   // Estado para obtener el valor de los usuarios que sigo y los que me siguen
   const [following, setFollowing] = useState([]);
-  const [userProfile, setUserProfile] = useState({});
-
+  const [userProfile, setUserProfile] = useState({})
+ 
   const params = useParams();
   // El componente se va actualizar solo una vez
   useEffect(() => {
     getUsers(1);
-    GetUserProfile(params.userId, setUserProfile);
+    GetUserProfile(params.userId, setUserProfile)
   }, []);
 
   const getUsers = async (nextPage = 1) => {
@@ -46,11 +46,11 @@ export const Following = () => {
 
     // Recorrer y limpiar follows para qeudarme con followed
     let cleanUsers = [];
-    data.followlist.forEach((follow) => {
-      cleanUsers = [...cleanUsers, follow.followed];
+    data.followlist.forEach(follow => {
+        cleanUsers = [...cleanUsers, follow.followed]
     });
     data.user = cleanUsers;
-
+   
     if (data.user && data.status == "success") {
       let newUsers = data.user;
 
@@ -58,7 +58,7 @@ export const Following = () => {
       if (users.length >= 1) {
         newUsers = [...users, ...data.user];
       }
-
+     
       setUsers(newUsers);
       setFollowing(data.user_following);
       setLoading(false);
@@ -73,9 +73,7 @@ export const Following = () => {
   return (
     <>
       <header className="content__header">
-        <h1 className="content__title">
-          Usuarios que sigue: {userProfile.name} {userProfile.surname}
-        </h1>
+        <h1 className="content__title">Usuarios que sigue: {userProfile.name}{userProfile.surname}</h1>
       </header>
       <UserList
         users={users}

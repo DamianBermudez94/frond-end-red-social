@@ -70,7 +70,7 @@ const UserList = ({
             <article className="posts__post" key={user._id}>
               <div className="post__container">
                 <div className="post__image-user">
-                  <Link to={"/social/perfil/"+ user._id} className="post__image-link">
+                  <Link to={"perfil/"+user._id} className="post__image-link">
                     {user.image != "default.png" && (
                       <img
                         src={Global.url + "user/uploads/" + user.image}
@@ -90,11 +90,11 @@ const UserList = ({
 
                 <div className="post__body">
                   <div className="post__user-info">
-                    <Link to={"/social/perfil/"+user._id} className="user-info__name">
+                    <Link to={"profile/"+user._id} className="user-info__name">
                       {user.name} {user.surname}
                     </Link>
                     <span className="user-info__divider"> | </span>
-                    <Link to={"/social/perfil/"+user._id} className="user-info__create-date">
+                    <Link to={"profile/"+user._id} className="user-info__create-date">
                       {user.create__at}
                     </Link>
                   </div>

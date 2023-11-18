@@ -57,9 +57,9 @@ export const Sidebar = () => {
       }
       // Reiniciar el formulario cuando se haya enviado la informacion
       if (data.status == "success" && uploadData == "success") {
-        alert("Hola mundo");
+        alert("Hola mundo")
         const myform = document.querySelector("#publications-form");
-        console.log("hola mundo", myform);
+        console.log("hola mundo",myform);
         myform.reset();
       }
     }
@@ -75,29 +75,26 @@ export const Sidebar = () => {
           <div className="aside__profile-info">
             <div className="profile-info__general-info">
               <div className="general-info__container-avatar">
-                <Link to={"perfil/" + auth._id}>
-                  {auth.image != "default.png" && (
-                    <img
-                      src={Global.url + "user/uploads/" + auth.image}
-                      className="container-avatar__img"
-                      alt="Foto de perfil"
-                    />
-                  )}
-                  {auth.image == "default.png" && (
-                    <img
-                      src={avatar}
-                      className="container-avatar__img"
-                      alt="Foto de perfil"
-                    />
-                  )}
+                <Link to={"profile/"+auth._id}>
+                {auth.image != "default.png" && (
+                  <img
+                    src={Global.url + "user/uploads/" + auth.image}
+                    className="container-avatar__img"
+                    alt="Foto de perfil"
+                  />
+                )}
+                {auth.image == "default.png" && (
+                  <img
+                    src={avatar}
+                    className="container-avatar__img"
+                    alt="Foto de perfil"
+                  />
+                )}
                 </Link>
               </div>
 
               <div className="general-info__container-names">
-                <Link
-                  to={"perfil/" + auth._id}
-                  className="container-names__name"
-                >
+                <Link to={"profile/" + auth._id} className="container-names__name">
                   {auth.name}
                   {auth.surname}
                 </Link>
@@ -107,7 +104,7 @@ export const Sidebar = () => {
 
             <div className="profile-info__stats">
               <div className="stats__following">
-                <Link to={"/social/siguiendo/" + auth._id} className="following__link">
+                <Link to={"siguiendo/" + auth._id} className="following__link">
                   <span className="following__title">Siguiendo</span>
                   <span className="following__number">
                     {counters.following}
@@ -115,7 +112,7 @@ export const Sidebar = () => {
                 </Link>
               </div>
               <div className="stats__following">
-                <Link to={"/social/seguidores/" + auth._id} className="following__link">
+                <Link to={"seguidores/" + auth._id} className="following__link">
                   <span className="following__title">Seguidores</span>
                   <span className="following__number">{counters.followed}</span>
                 </Link>

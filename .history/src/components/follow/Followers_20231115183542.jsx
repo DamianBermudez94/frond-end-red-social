@@ -6,7 +6,7 @@ import UserList from "../user/UserList";
 import { useParams } from "react-router-dom";
 import { GetUserProfile } from "../helpers/GetUserProfile";
 
-export const Following = () => {
+export const Followers = () => {
   // Estado para ontener los usuarios
   const [users, setUsers] = useState([]);
   // Estado para obtener la cantidad de paginas
@@ -17,13 +17,13 @@ export const Following = () => {
   const [loading, setLoading] = useState(true);
   // Estado para obtener el valor de los usuarios que sigo y los que me siguen
   const [following, setFollowing] = useState([]);
-  const [userProfile, setUserProfile] = useState({});
+  const [userProfile, setUserProfile] = useState({})
 
   const params = useParams();
   // El componente se va actualizar solo una vez
   useEffect(() => {
     getUsers(1);
-    GetUserProfile(params.userId, setUserProfile);
+    GetUserProfile(params.userId, setUserProfile)
   }, []);
 
   const getUsers = async (nextPage = 1) => {
@@ -32,7 +32,7 @@ export const Following = () => {
     const userId = params.userId;
     // Petición para sacar los usuarios
     const request = await fetch(
-      Global.url + "follow/following/" + userId + "/" + nextPage,
+      Global.url + "follow/followers/" + userId + "/" + nextPage,
       {
         method: "GET",
         headers: {
@@ -47,7 +47,7 @@ export const Following = () => {
     // Recorrer y limpiar follows para qeudarme con followed
     let cleanUsers = [];
     data.followlist.forEach((follow) => {
-      cleanUsers = [...cleanUsers, follow.followed];
+      cleanUsers = [...cleanUsers, follow.user];
     });
     data.user = cleanUsers;
 
@@ -73,9 +73,7 @@ export const Following = () => {
   return (
     <>
       <header className="content__header">
-        <h1 className="content__title">
-          Usuarios que sigue: {userProfile.name} {userProfile.surname}
-        </h1>
+        <h1 className="content__title">Seguidores de {userProfile.name} {userProfile.surname}</h1>
       </header>
       <UserList
         users={users}

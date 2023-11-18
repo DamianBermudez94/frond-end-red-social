@@ -107,7 +107,7 @@ export const Sidebar = () => {
 
             <div className="profile-info__stats">
               <div className="stats__following">
-                <Link to={"/social/siguiendo/" + auth._id} className="following__link">
+                <Link to={"siguiendo/" + auth._id} className="following__link">
                   <span className="following__title">Siguiendo</span>
                   <span className="following__number">
                     {counters.following}
@@ -115,7 +115,7 @@ export const Sidebar = () => {
                 </Link>
               </div>
               <div className="stats__following">
-                <Link to={"/social/seguidores/" + auth._id} className="following__link">
+                <Link to={"seguidores/" + auth._id} className="following__link">
                   <span className="following__title">Seguidores</span>
                   <span className="following__number">{counters.followed}</span>
                 </Link>

@@ -29,7 +29,7 @@ export const Routing = () => {
             <Route path="ajustes" element={<Config/>} />
             <Route path="siguiendo/:userId" element={<Following/>} />
             <Route path="seguidores/:userId" element={<Followers/>} />
-            <Route path="perfil/:userId" element={<Profile/>} />
+            <Route path="profile/:userId" element={<Profile/>} />
           </Route>
           <Route
             path="*"
