@@ -59,9 +59,9 @@ const UserList = ({
     // Inicializamos la pagina en 1
     let next = page + 1;
     setPage(next);
-
+    console.log(page);
     getUsers(next);
-   
+    console.log(following);
   };
   return (
     <>

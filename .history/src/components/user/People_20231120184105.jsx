@@ -7,7 +7,7 @@ import UserList from "./UserList";
 export const People = () => {
 
   // Estado para ontener los usuarios
-  const [user, setUsers] = useState([]);
+  const [users, setUsers] = useState([]);
   // Estado para obtener la cantidad de paginas
   const [page, setPage] = useState(1);
   // Estado para obtener el valor del button
@@ -40,8 +40,8 @@ export const People = () => {
       console.log("Soy el nuevo listado",newUsers);
 
       // comprobamos la posición de la page y le asignamos al array los nuevos valores
-      if (user.length >= 1) {
-        newUsers = [...user,...data.user];
+      if (users.length >= 1) {
+        newUsers = [...users,data.user];
         console.log("Soy el nuevo listado:",newUsers);
       }
 
@@ -50,7 +50,7 @@ export const People = () => {
       setLoading(false);
 
       // Comprobamos la longitud del estado con en de la lista y si es igual, al estado le pasamos false
-      if (user.length >= data.total) {
+      if (users.length >= data.total) {
         setMore(false);
       }
     }
@@ -64,7 +64,7 @@ export const People = () => {
       <header className="content__header">
         <h1 className="content__title">Gente</h1>
       </header>
-      <UserList users={user}
+      <UserList users={users}
                 getUsers={getUsers}
                 following={following}
                 setFollowing={setFollowing}

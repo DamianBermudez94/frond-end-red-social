@@ -22,7 +22,6 @@ const UserList = ({
   console.log("Soy el auth",auth);
  console.log("Soy el user",users);
   const token = localStorage.getItem("token")
-  console.log(token);
   const follow = async (userId) => {
     const request = await fetch(Global.url + "follow/save", {
       method: "POST",
@@ -59,13 +58,13 @@ const UserList = ({
     // Inicializamos la pagina en 1
     let next = page + 1;
     setPage(next);
-
+    console.log(page);
     getUsers(next);
-   
+    console.log(following);
   };
   return (
     <>
-      <div className="content__posts" >
+      <div className="content__posts">
         {users.map((user) => {
           console.log("hola",user._id);
           return(

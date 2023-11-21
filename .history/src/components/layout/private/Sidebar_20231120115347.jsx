@@ -49,7 +49,7 @@ export const Sidebar = () => {
         }
       );
       const uploadData = await uploadRequest.json();
-      console.log("soy la data",uploadData);
+      console.log(uploadData);
       if (uploadData.status == "success") {
         setStored("stored");
       } else {

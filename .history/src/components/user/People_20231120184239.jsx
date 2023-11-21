@@ -50,7 +50,7 @@ export const People = () => {
       setLoading(false);
 
       // Comprobamos la longitud del estado con en de la lista y si es igual, al estado le pasamos false
-      if (user.length >= data.total) {
+      if (users.length >= data.total) {
         setMore(false);
       }
     }
@@ -64,7 +64,7 @@ export const People = () => {
       <header className="content__header">
         <h1 className="content__title">Gente</h1>
       </header>
-      <UserList users={user}
+      <UserList users={users}
                 getUsers={getUsers}
                 following={following}
                 setFollowing={setFollowing}

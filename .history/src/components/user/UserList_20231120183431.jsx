@@ -59,7 +59,6 @@ const UserList = ({
     // Inicializamos la pagina en 1
     let next = page + 1;
     setPage(next);
-
     getUsers(next);
    
   };

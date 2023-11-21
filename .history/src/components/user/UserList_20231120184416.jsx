@@ -7,7 +7,7 @@ import { useAuth } from "../hooks/useAuth";
 
 
 const UserList = ({
-  users,
+  user,
   getUsers,
   following,
   setFollowing,
@@ -20,7 +20,7 @@ const UserList = ({
 
   const { auth } = useAuth();
   console.log("Soy el auth",auth);
- console.log("Soy el user",users);
+ console.log("Soy el user",user);
   const token = localStorage.getItem("token")
   console.log(token);
   const follow = async (userId) => {
@@ -59,20 +59,19 @@ const UserList = ({
     // Inicializamos la pagina en 1
     let next = page + 1;
     setPage(next);
-
     getUsers(next);
    
   };
   return (
     <>
       <div className="content__posts" >
-        {users.map((user) => {
-          console.log("hola",user._id);
+        {user.map((users) => {
+          console.log("hola",users._id);
           return(
-            <article className="posts__post" key={user._id}>
+            <article className="posts__post" key={users._id}>
               <div className="post__container">
                 <div className="post__image-user">
-                  <Link to={"/social/perfil/"+ user._id} className="post__image-link">
+                  <Link to={"/social/perfil/"+ users._id} className="post__image-link">
                     {user.image != "default.png" && (
                       <img
                         src={Global.url + "user/uploads/" + user.image}
@@ -92,32 +91,32 @@ const UserList = ({
 
                 <div className="post__body">
                   <div className="post__user-info">
-                    <Link to={"/social/perfil/"+user._id} className="user-info__name">
-                      {user.name} {user.surname}
+                    <Link to={"/social/perfil/"+users._id} className="user-info__name">
+                      {users.name} {users.surname}
                     </Link>
                     <span className="user-info__divider"> | </span>
-                    <Link to={"/social/perfil/"+user._id} className="user-info__create-date">
-                      {user.create__at}
+                    <Link to={"/social/perfil/"+users._id} className="user-info__create-date">
+                      {users.create__at}
                     </Link>
                   </div>
 
-                  <h4 className="post__content">{user.bio}</h4>
+                  <h4 className="post__content">{users.bio}</h4>
                 </div>
               </div>
-              {user._id != auth._id && (
+              {users._id != auth._id && (
                 <div className="post__buttons">
                   {!following.includes(user._id) && (
                     <button
                       className="post__button post__button--green"
-                      onClick={() => follow(user._id)}
+                      onClick={() => follow(users._id)}
                     >
                       seguir
                     </button>
                   )}
-                  {following.includes(user._id) && (
+                  {following.includes(users._id) && (
                     <button
                       className="post__button"
-                      onClick={() => unfollow(user._id)}
+                      onClick={() => unfollow(users._id)}
                     >
                       Dejar de seguir
                     </button>

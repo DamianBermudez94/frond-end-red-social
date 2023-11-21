@@ -7,7 +7,7 @@ import { Global } from "../helpers/Global";
 
 export const Profile = () => {
   // Estado para sacar el usuario
-  const [users, setUser] = useState({});
+  const [user, setUser] = useState({});
   // Estado para devolver los contadores de seguidores,seguidos y publicaciones
   const [counters, setCounters] = useState({});
   // Estado para verificar seguidores/seguidos
@@ -28,10 +28,10 @@ export const Profile = () => {
   // para poder setear estado de seguir/dejar de seguir
   const getDataUser = async () => {
     let dataUser = await GetUserProfile(params.userId, setUser);
-   
+    console.log(dataUser);
     if (dataUser.following && dataUser.following._id) {
       setIfollow(true);
-     
+      console.log(dataUser);
     }
   };
   const getCounters = async () => {
@@ -44,15 +44,12 @@ export const Profile = () => {
     });
 
     const data = await request.json();
-    
+    console.log("soy la data gil",data.userId);
+    console.log("Soy el id",auth._id);
     if (data.following) {
-      setCounters(data);
+      setCounters(data.user);
     }
   };
-
-  const getPublications = async()=>{
-
-  }
 
   return (
     <>
@@ -79,12 +76,12 @@ export const Profile = () => {
 
               <div className="general-info__container-names">
                 <h1 className="container-names__name">
-                  {users.name}
-                  {users.surname}
+                  {user.name}
+                  {user.surname}
                 </h1>
-                <h2 className="container-names__nickname">{users.nick}</h2>
+                <h2 className="container-names__nickname">{user.nick}</h2>
               </div>
-              {users._id != auth._id &&
+              {user._id != auth._id &&
                 (iFollow ? (
                   <button className="content__button post__button">
                     Dejar de seguir
@@ -94,11 +91,11 @@ export const Profile = () => {
                 ))}
             </div>
 
-            <p className="container-names__nickname">{users.bio}</p>
+            <p className="container-names__nickname">{user.bio}</p>
             <div className="profile-info__stats">
               <div className="stats__following">
                 <Link
-                  to={"/social/siguiendo/" + users._id}
+                  to={"/social/siguiendo/" + user._id}
                   className="following__link"
                 >
                   <span className="following__title">Siguiendo</span>
@@ -109,7 +106,7 @@ export const Profile = () => {
               </div>
               <div className="stats__following">
                 <Link
-                  to={"/social/seguidores/" + users._id}
+                  to={"/social/seguidores/" + user._id}
                   className="following__link"
                 >
                   <span className="following__title">Seguidores</span>
@@ -121,7 +118,7 @@ export const Profile = () => {
 
               <div className="stats__following">
                 <Link
-                  to={"/social/perfil/" + users._id}
+                  to={"/social/perfil/" + user._id}
                   className="following__link"
                 >
                   <span className="following__title">Publicaciones</span>

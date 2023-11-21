@@ -28,10 +28,10 @@ export const Profile = () => {
   // para poder setear estado de seguir/dejar de seguir
   const getDataUser = async () => {
     let dataUser = await GetUserProfile(params.userId, setUser);
-   
+    console.log(dataUser);
     if (dataUser.following && dataUser.following._id) {
       setIfollow(true);
-     
+      console.log("soy la datouser",dataUser);
     }
   };
   const getCounters = async () => {
@@ -44,15 +44,12 @@ export const Profile = () => {
     });
 
     const data = await request.json();
-    
+    console.log("soy la data gil",data.following);
+    console.log("Soy el id",auth._id);
     if (data.following) {
       setCounters(data);
     }
   };
-
-  const getPublications = async()=>{
-
-  }
 
   return (
     <>

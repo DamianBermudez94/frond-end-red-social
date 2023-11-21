@@ -49,7 +49,7 @@ export const Sidebar = () => {
         }
       );
       const uploadData = await uploadRequest.json();
-      console.log("soy la data",uploadData);
+      console.log(uploadData);
       if (uploadData.status == "success") {
         setStored("stored");
       } else {
@@ -68,7 +68,7 @@ export const Sidebar = () => {
     <>
       <aside className="layout__aside">
         <header className="aside__header">
-          <h1 className="aside__title">Hola, {auth.name} {auth.surname}</h1>
+          <h1 className="aside__title">Hola, {auth.name}</h1>
         </header>
 
         <div className="aside__container">

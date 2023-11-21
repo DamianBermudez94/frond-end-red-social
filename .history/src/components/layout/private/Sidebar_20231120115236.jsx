@@ -49,7 +49,7 @@ export const Sidebar = () => {
         }
       );
       const uploadData = await uploadRequest.json();
-      console.log("soy la data",uploadData);
+      console.log(uploadData);
       if (uploadData.status == "success") {
         setStored("stored");
       } else {
@@ -68,7 +68,7 @@ export const Sidebar = () => {
     <>
       <aside className="layout__aside">
         <header className="aside__header">
-          <h1 className="aside__title">Hola, {auth.name} {auth.surname}</h1>
+          <h1 className="aside__title">Hola, {auth.name}</h1>
         </header>
 
         <div className="aside__container">
@@ -109,7 +109,7 @@ export const Sidebar = () => {
               <div className="stats__following">
                 <Link to={"/social/siguiendo/" + auth._id} className="following__link">
                   <span className="following__title">Siguiendo</span>
-                  <span className="following__number">
+                  <span className="following__number">15505
                     {counters.following}
                   </span>
                 </Link>
