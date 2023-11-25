@@ -66,7 +66,7 @@ const UserList = ({
     <>
       <div className="content__posts" >
         {users.map((user) => {
-    
+          console.log("hola",user._id);
           return(
             <article className="posts__post" key={user._id}>
               <div className="post__container">

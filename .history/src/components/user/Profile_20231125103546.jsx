@@ -95,14 +95,36 @@ export const Profile = () => {
         setMore(false);
       }
       if (data.page <= 1) {
-        setMore(false);
+        setMore(false)
       }
     }
   };
+  const nexPage = () => {
+    const next = page + 1;
+    setPage(next);
+    getPublications(next);
+  };
+  const deletePublications = async (publicationsId) => {
+    const request = await fetch(
+      Global.url + "publication/delete/" + publicationsId,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-type": "application/json",
+          Authorization: token,
+        },
+      }
+    );
 
+    const data = await request.json();
+    console.log(data);
+    getPublications(1,true);
+    setPage(1)
+    setMore(true)
+  }
   return (
     <>
-      <header className="layout__aside">
+      <headers className="layout__aside">
         <div className="aside__container">
           <div className="aside__profile-info">
             <div className="profile-info__general-info">
@@ -179,17 +201,10 @@ export const Profile = () => {
             </div>
           </div>
         </div>
-      </header>
-      <PublicationList
-        publications={publications}
-        getPublications={getPublications}
-        page={page}
-        setPage={setPage}
-        more={more}
-        setMore={setMore}
-        
-        
-      />
+      </headers>
+      <PublicationList/>
+     
+     
     </>
   );
 };

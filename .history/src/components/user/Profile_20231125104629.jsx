@@ -102,7 +102,7 @@ export const Profile = () => {
 
   return (
     <>
-      <header className="layout__aside">
+      <headers className="layout__aside">
         <div className="aside__container">
           <div className="aside__profile-info">
             <div className="profile-info__general-info">
@@ -179,16 +179,16 @@ export const Profile = () => {
             </div>
           </div>
         </div>
-      </header>
+      </headers>
       <PublicationList
         publications={publications}
-        getPublications={getPublications}
+        setPublications={setPublications}
         page={page}
         setPage={setPage}
         more={more}
         setMore={setMore}
-        
-        
+        getPublications={getPublications}
+        auth={auth}
       />
     </>
   );

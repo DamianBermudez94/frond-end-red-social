@@ -21,7 +21,7 @@ const UserList = ({
   const { auth } = useAuth();
  
   const token = localStorage.getItem("token")
-
+  console.log(token);
   const follow = async (userId) => {
     const request = await fetch(Global.url + "follow/save", {
       method: "POST",
@@ -32,7 +32,7 @@ const UserList = ({
       },
     });
     const data = await request.json();
-
+    console.log("soy la data follow",data);
     if (data.status == "success") {
       setFollowing([...following, userId]);
     }
@@ -46,7 +46,7 @@ const UserList = ({
       },
     });
     const data = await request.json();
- 
+    console.log("soy la data unfollow",data);
     if (data.status == "success") {
       let filterFollowings = following.filter(
         (followingUserId) => userId !== followingUserId
@@ -66,7 +66,7 @@ const UserList = ({
     <>
       <div className="content__posts" >
         {users.map((user) => {
-    
+          console.log("hola",user._id);
           return(
             <article className="posts__post" key={user._id}>
               <div className="post__container">
