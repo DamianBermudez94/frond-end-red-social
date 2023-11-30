@@ -1,7 +1,7 @@
-
+import avatar from "../../assets/img/user.png";
 import { useEffect, useState } from "react";
 
-
+import { Link, useParams } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
 import { Global } from "../helpers/Global";
 import { PublicationList } from "../publication/PublicationList";
@@ -12,7 +12,7 @@ export const Feed = () => {
   // Estado para obtener el valor del button
   const [more, setMore] = useState(true);
   const [page, setPage] = useState(1);
-
+  const params = useParams();
   const { auth } = useAuth();
 
   useEffect(() => {
@@ -33,11 +33,12 @@ export const Feed = () => {
     const data = await request.json();
     console.log(data);
     if (data.status == "success") {
-      let newPublications = data.publications;
+      let newPublications = data.listPublications;
       // Comprobamos que no haya nuevos perfiles y que haya publicaciones
       // para agregar nuevas publicaciones
       if (publications.length >= 1) {
-        newPublications = [...publications, ...data.publications];
+        newPublications = [...publications, ...data.listPublications];
+        console.log(newPublications);
       }
       // Receteamos las publicaciones cuando se detecta um nuevo perfil
       // y agregamos nuevas publicaciones de ese perfil

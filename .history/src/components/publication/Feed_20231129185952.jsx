@@ -1,7 +1,7 @@
-
+import avatar from "../../assets/img/user.png";
 import { useEffect, useState } from "react";
 
-
+import { Link, useParams } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
 import { Global } from "../helpers/Global";
 import { PublicationList } from "../publication/PublicationList";
@@ -12,7 +12,7 @@ export const Feed = () => {
   // Estado para obtener el valor del button
   const [more, setMore] = useState(true);
   const [page, setPage] = useState(1);
-
+  const params = useParams();
   const { auth } = useAuth();
 
   useEffect(() => {

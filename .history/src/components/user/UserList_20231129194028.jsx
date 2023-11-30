@@ -96,7 +96,7 @@ const UserList = ({
                     </Link>
                     <span className="user-info__divider"> | </span>
                     <Link to={"/social/perfil/"+user._id} className="user-info__create-date">
-                    <ReactTimeAgo date={user.create_at} locale="es-ES"/>
+                    <ReactTimeAgo date={user.user.create_at} locale="es-ES"/>
                     </Link>
                   </div>
 

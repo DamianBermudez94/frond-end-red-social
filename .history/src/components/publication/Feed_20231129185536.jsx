@@ -1,7 +1,7 @@
-
+import avatar from "../../assets/img/user.png";
 import { useEffect, useState } from "react";
 
-
+import { Link, useParams } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
 import { Global } from "../helpers/Global";
 import { PublicationList } from "../publication/PublicationList";
@@ -12,7 +12,7 @@ export const Feed = () => {
   // Estado para obtener el valor del button
   const [more, setMore] = useState(true);
   const [page, setPage] = useState(1);
-
+  const params = useParams();
   const { auth } = useAuth();
 
   useEffect(() => {
@@ -44,7 +44,7 @@ export const Feed = () => {
 
       setPublications(newPublications);
       // Comprobamos la longitud del estado con en de la lista y si es igual, al estado le pasamos false
-      if (publications.length >= data.total - data.publications.length) {
+      if (publications.length >= data.total - data.publications) {
         setMore(false);
       }
       if (data.page <= 1) {

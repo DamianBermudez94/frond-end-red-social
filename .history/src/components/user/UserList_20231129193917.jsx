@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
 import avatar from "../../assets/img/user.png";
-import React from "react";
+
 import { Global } from "../helpers/Global";
 import { useAuth } from "../hooks/useAuth";
 import ReactTimeAgo from 'react-time-ago';
@@ -96,7 +96,7 @@ const UserList = ({
                     </Link>
                     <span className="user-info__divider"> | </span>
                     <Link to={"/social/perfil/"+user._id} className="user-info__create-date">
-                    <ReactTimeAgo date={user.create_at} locale="es-ES"/>
+                    <ReactTimeAgo date={user.user.create_at} locale="es-ES"/>
                     </Link>
                   </div>
 

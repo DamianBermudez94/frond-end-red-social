@@ -3,7 +3,7 @@ import avatar from "../../assets/img/user.png";
 
 import { useAuth } from "../hooks/useAuth";
 import { Global } from "../helpers/Global";
-import ReactTimeAgo from 'react-time-ago';
+import ReactTimeAgo from 'react-time-ago'
 export const PublicationList = ({
   publications,
   more,
@@ -76,7 +76,7 @@ export const PublicationList = ({
                     </a>
                     <span className="user-info__divider"> | </span>
                     <a href="#" className="user-info__create-date">
-                      <ReactTimeAgo date={publication.create_at} locale="es-ES"/>
+                      <ReactTimeAgo date={publication.user.create_at} locale="es-ES"/>
                     </a>
                   </div>
 
