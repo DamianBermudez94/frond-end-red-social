@@ -1,3 +1,3 @@
 export const Global = {
-    url:"http://localhost:3750/api/"
+    url:"https://04-proyecto-api-red-social.vercel.app/"
 }

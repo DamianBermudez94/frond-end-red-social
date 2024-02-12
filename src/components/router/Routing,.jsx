@@ -39,7 +39,7 @@ export const Routing = () => {
                 <Link to="/">Volver al inicio</Link>
               </>
             }
-          ></Route>
+          />
         </Routes>
       </AuthProvider>
     </BrowserRouter>
