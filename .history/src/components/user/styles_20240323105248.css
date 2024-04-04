@@ -1,0 +1,8 @@
+.content__posts{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.form-group{
+    width: 100%;
+}

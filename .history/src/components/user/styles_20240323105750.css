@@ -1,0 +1,27 @@
+.content__posts{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.content-form__login{
+    width: 100%;
+    max-width: 500px;
+    
+}
+.content-form__login label{
+    font-size: 1.9rem;
+    
+}
+
+.content-form__login .btn{
+    font-size: 1.9rem;
+    padding: 15px 15px;
+    width: 50%;
+    transition: all .5s;
+    
+}
+.content-form__login .btn:hover{
+    background-color:  rgb(20, 87, 20);
+   
+    
+}

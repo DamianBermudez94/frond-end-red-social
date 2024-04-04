@@ -1,0 +1,10 @@
+.content__posts{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.content-form__login{
+    width: 100%;
+    max-width: 500px;
+    background-color: red;
+}
