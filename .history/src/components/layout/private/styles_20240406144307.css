@@ -1,0 +1,23 @@
+button{
+    border: 0;
+    padding: 0;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.burger, .menu{
+    position: fixed;
+}
+
+.burger{
+    z-index: 4;
+    top: 0;
+    left: 0;
+    display: grid;
+    place-items: center;
+    width: 88px;
+    height: 88px;
+    background-image: url("../../../assets/img/menu-svgrepo-com.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+}

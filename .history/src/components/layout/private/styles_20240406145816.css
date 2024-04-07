@@ -1,0 +1,57 @@
+button{
+    border: 0;
+    padding: 0;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.burger, .menu{
+    position: fixed;
+    
+}
+
+.burger{
+    z-index: 4;
+    top: 0;
+    left: 0;
+    display: grid;
+    place-items: center;
+    width: 88px;
+    height: 88px;
+    background-image: url("../../../assets/img/menu-svgrepo-com.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.burger .open{
+    background-image: url("../../../assets/img/close-svgrepo-com.svg");
+}
+.background{
+    position: fixed;
+    z-index: 2;
+    top: 44px;
+    left: 44px;
+    aspect-ratio: 1/1;
+    translate: -50% -50%;
+    height: 88px;
+    background-color: #07030a;
+    border-radius: 50%;
+    opacity: 0;
+    transition: 0.6s;
+}
+.background .open{
+    height: 300ch;
+    opacity: 0.85;
+}
+.menu{
+    z-index: 3;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.5s;
+    background-color: red;
+}
