@@ -186,8 +186,6 @@ body {
 }
 
 .content__posts {
-  grid-column:  span 1;
-  width: 100%;
   max-width: 1200px;
   padding: 30px;
   display: grid;

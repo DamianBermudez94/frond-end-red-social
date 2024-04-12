@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { NavLink, Link} from "react-router-dom";
+import { NavLink, Link, useNavigate } from "react-router-dom";
+import avatar from "../../../assets/img/user.png";
 import { useAuth } from "../../hooks/useAuth";
 import { Global } from "../../helpers/Global";
 import "./styles.css";
 export const Nav = () => {
   const { auth } = useAuth();
-
+  const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   console.log(toggleMenu);

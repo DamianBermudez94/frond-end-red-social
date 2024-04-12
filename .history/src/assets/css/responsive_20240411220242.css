@@ -1,11 +1,16 @@
 @media (max-width: 1365px) {
+ 
+  .content__posts {
+    flex-direction: column;
+  }
+
   .aside__container {
     display: flex;
     flex-direction: row;
   }
 
   .layout__aside {
-    grid-column:span 4;
+    grid-column: 1;
     margin-left: 2rem;
     padding-bottom: 2rem;
   }
@@ -37,7 +42,9 @@
 }
 
 @media (max-width: 690px) {
-
+  .layout {
+    grid-template-rows: auto auto auto;
+  }
 
   .layout__navbar {
     align-items: normal;

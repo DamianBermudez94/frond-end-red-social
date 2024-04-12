@@ -109,7 +109,7 @@ export const PublicationList = ({
           </button>
         </div>
       )}{
-        setMore == false ?(
+        more == false ?(
           <strong>No hay publicaciones</strong>
         ):""
       }
